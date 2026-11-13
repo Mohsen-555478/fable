@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="فروشگاه اینترنتی پوشاک مردانه فِیبل ست — کفش، پیراهن، کت، کاپشن، بافت، دورس و هودی، شلوار. ارسال سریع و ضمانت بازگشت.">
+    <meta name="theme-color" content="#1e352b">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231e352b'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' fill='%23ece5d8' text-anchor='middle'%3Ef.%3C/text%3E%3C/svg%3E">
+    <title>FABLE.set | فروشگاه پوشاک مردانه</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&family=Cormorant+Garamond:wght@500;600&family=Lalezar&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- ===== Header ===== -->
+    <header class="header">
+        <div class="header-inner">
+            <!-- در RTL: اولین ستون = سمت راست -->
+            <button class="icon-btn menu-btn" id="menuBtn" aria-label="منو">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="16" y2="12"/><line x1="4" y1="17" x2="12" y2="17"/></svg>
+            </button>
+
+            <a href="#" class="logo">fable<em>.</em>set</a>
+
+            <button class="icon-btn cart-btn" id="cartBtn" aria-label="سبد خرید">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l1.5 13.5a1 1 0 0 1-1 1.1h-13a1 1 0 0 1-1-1.1L6 7z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/></svg>
+                <span class="cart-badge" id="cartBadge">۰</span>
+            </button>
+        </div>
+
+        <!-- ===== Hamburger Menu ===== -->
+        <div class="menu-drawer" id="menuDrawer">
+            <nav class="menu-nav">
+                <a href="#hero" class="menu-link">خانه</a>
+
+                <button class="menu-link menu-toggle" id="productsToggle">
+                    محصولات
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="submenu" id="submenu">
+                    <a href="#products" class="sub-link" data-filter="کفش">کفش</a>
+                    <a href="#products" class="sub-link" data-filter="پیراهن">پیراهن</a>
+                    <a href="#products" class="sub-link" data-filter="کت">کت</a>
+                    <a href="#products" class="sub-link" data-filter="کاپشن">کاپشن</a>
+                    <a href="#products" class="sub-link" data-filter="بافت">بافت</a>
+                    <a href="#products" class="sub-link" data-filter="دورس و هودی">دورس و هودی</a>
+
+                    <button class="sub-link sub-toggle" id="pantsToggle">
+                        شلوار
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+                    </button>
+                    <div class="pants-list" id="pantsList">
+                        <a href="#products" class="sub-link" data-filter="پارچه‌ای">شلوار پارچه‌ای</a>
+                        <a href="#products" class="sub-link" data-filter="کتان">شلوار کتان</a>
+                        <a href="#products" class="sub-link" data-filter="جین">شلوار جین</a>
+                        <a href="#products" class="sub-link" data-filter="سیلک">شلوار سیلک</a>
+                    </div>
+                </div>
+
+                <a href="#about" class="menu-link">درباره ما</a>
+                <a href="#blog" class="menu-link">مقاله</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== Cart Drawer ===== -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-drawer" id="cartDrawer">
+        <div class="cart-head">
+            <h3>سبد خرید شما</h3>
+            <button class="icon-btn" id="cartClose" aria-label="بستن">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+        <div class="cart-body" id="cartItems"></div>
+        <div class="cart-foot">
+            <div class="cart-total">
+                <span>جمع کل:</span>
+                <strong id="cartTotal">۰ تومان</strong>
+            </div>
+            <button class="btn btn-cream btn-block" id="checkoutBtn">ثبت سفارش</button>
+        </div>
+    </aside>
+
+    <!-- ===== Toast ===== -->
+    <div class="toast" id="toast">✔ به سبد خرید اضافه شد</div>
+
+    <main class="page">
+
+        <!-- ===== Hero (full model photo — setmen style) ===== -->
+        <section class="hero" id="hero">
+            <div class="hero-img" id="heroBox">
+                <img id="heroFirstImg" src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=1600&q=80" alt="کالکشن مردانه سبزپوش"
+                     onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 4 4%22%3E%3Crect width=%224%22 height=%224%22 fill=%22%23bab3a5%22/%3E%3C/svg%3E';">
+            </div>
+            <div class="hero-caption">
+                <span class="mini-label" id="heroLabel">New Collection</span>
+                <h1 class="hero-title" id="heroTitle">کالکشن پاییز و زمستان ۱۴۰۵</h1>
+            </div>
+        </section>
+
+        <!-- ===== 4 banner boxes with prices ===== -->
+        <section class="section" id="banners">
+            <div class="head-row">
+                <h2>دسته‌بندی‌های محبوب</h2>
+            </div>
+            <div class="banner-grid" id="bannerGrid">
+                <a href="#products" class="cat-banner" data-filter="کفش">
+                    <div class="cb-media">
+                        <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=600&q=80" alt="کفش"
+                             onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 4 4%22%3E%3Crect width=%224%22 height=%224%22 fill=%22%23bab3a5%22/%3E%3C/svg%3E';">
+                    </div>
+                    <div class="cb-foot">
+                        <span class="cb-name">کفش</span>
+                        <span class="cb-price">شروع قیمت از <b>۱۱۸.۰۰۰.۰۰۰</b></span>
+                    </div>
+                </a>
+                <a href="#products" class="cat-banner" data-filter="بافت">
+                    <div class="cb-media">
+                        <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=600&q=80" alt="بافت"
+                             onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 4 4%22%3E%3Crect width=%224%22 height=%224%22 fill=%22%23bab3a5%22/%3E%3C/svg%3E';">
+                    </div>
+                    <div class="cb-foot">
+                        <span class="cb-name">بافت</span>
+                        <span class="cb-price">شروع قیمت از <b>۷۹.۰۰۰.۰۰۰</b></span>
+                    </div>
+                </a>
+                <a href="#products" class="cat-banner" data-filter="دورس و هودی">
+                    <div class="cb-media">
+                        <img src="https://images.unsplash.com/photo-1556906781-9a412961c28c?w=600&q=80" alt="دروس"
+                             onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 4 4%22%3E%3Crect width=%224%22 height=%224%22 fill=%22%23bab3a5%22/%3E%3C/svg%3E';">
+                    </div>
+                    <div class="cb-foot">
+                        <span class="cb-name">دروس</span>
+                        <span class="cb-price">شروع قیمت از <b>۴۹.۸۰۰.۰۰۰</b></span>
+                    </div>
+                </a>
+                <a href="#products" class="cat-banner" data-filter="کت">
+                    <div class="cb-media">
+                        <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80" alt="کت"
+                             onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 4 4%22%3E%3Crect width=%224%22 height=%224%22 fill=%22%23bab3a5%22/%3E%3C/svg%3E';">
+                    </div>
+                    <div class="cb-foot">
+                        <span class="cb-name">کت</span>
+                        <span class="cb-price">شروع قیمت از <b>۶۹.۸۰۰.۰۰۰</b></span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- ===== Products ===== -->
+        <section class="section" id="products">
+            <div class="head-row">
+                <h2>محصولات پرفروش</h2>
+                <span class="see-link" id="productCount"></span>
+            </div>
+            <div class="filters" id="filters">
+                <button class="filter-btn active" data-filter="همه">همه</button>
+                <button class="filter-btn" data-filter="کفش">کفش</button>
+                <button class="filter-btn" data-filter="پیراهن">پیراهن</button>
+                <button class="filter-btn" data-filter="کت">کت</button>
+                <button class="filter-btn" data-filter="کاپشن">کاپشن</button>
+                <button class="filter-btn" data-filter="بافت">بافت</button>
+                <button class="filter-btn" data-filter="دورس و هودی">دورس و هودی</button>
+                <button class="filter-btn" data-filter="شلوار">شلوار</button>
+            </div>
+            <div class="product-grid" id="productGrid"></div>
+        </section>
+
+        <!-- ===== Dual CTA panels ===== -->
+        <section class="section">
+            <div class="cta-grid">
+                <div class="cta-panel cta-light">
+                    <p class="cta-sub">استایل کلاسیک، اعتمادِ به‌پوش بیشتر</p>
+                    <p class="cta-desc">ترکیب‌هایی که هم برای روز درست‌اند و هم برای شب؛ انتخابی برای هر سلیقه‌ای.</p>
+                    <a href="#products" class="btn btn-outline">مشاهده محصولات</a>
+                </div>
+                <div class="cta-panel cta-dark">
+                    <span class="mini-label">New Collection</span>
+                    <h3 class="cta-latin">Autumn Winter 2026</h3>
+                    <p class="cta-desc">کالکشن جدید پاییز و زمستان رسید</p>
+                    <a href="#products" class="btn btn-cream">مشاهده کالکشن</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== About ===== -->
+        <section class="section" id="about">
+            <div class="about-panel">
+                <span class="mini-label">About Us</span>
+                <h2>درباره فِیبل ست</h2>
+                <p id="aboutText"></p>
+                <div class="about-points">
+                    <span>✔ دوخت و پارچه ایرانی</span>
+                    <span>✔ ۷ روز ضمانت بازگشت</span>
+                    <span>✔ ارسال ۴۸ ساعته</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Blog / مقاله ===== -->
+        <section class="section" id="blog">
+            <div class="head-row">
+                <h2>آخرین مقالات</h2>
+            </div>
+            <div class="blog-grid" id="blogGrid"></div>
+        </section>
+
+        <!-- ===== Stats ===== -->
+        <section class="stats-bar">
+            <div><strong>+۵۰</strong><span>برند متنوع</span></div>
+            <div><strong>+۱۲۰</strong><span>هزار مشتری راضی</span></div>
+            <div><strong>+۹۰۰</strong><span>مدل لباس موجود</span></div>
+            <div><strong>+۷</strong><span>سال تجربه</span></div>
+        </section>
+
+        <!-- ===== Newsletter ===== -->
+        <section class="section" id="contact">
+            <div class="newsletter">
+                <span class="mini-label">خبرنامه</span>
+                <h2>اول از همه تخفیف‌ها را ببینید</h2>
+                <form id="newsForm">
+                    <input type="email" id="emailInput" placeholder="ایمیل خود را وارد کنید..." required>
+                    <button type="submit" class="btn btn-cream">عضویت</button>
+                </form>
+                <p class="msg" id="newsMsg"></p>
+            </div>
+        </section>
+
+        <!-- ===== Footer ===== -->
+        <footer class="footer">
+            <div class="footer-top">
+                <a href="#" class="logo logo-footer">fable<em>.</em>set</a>
+                <ul>
+                    <li><a href="#about">درباره ما</a></li>
+                    <li><a href="#blog">مقاله</a></li>
+                    <li><a href="#contact">تماس با ما</a></li>
+                    <li><a id="adminLink" class="admin-link" style="display:none">⚙ مدیریت</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <p>طراحی و توسعه با ♥ سبز</p>
+                <p>FABLE.set © ۱۴۰۵ | تمامی حقوق محفوظ است.</p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- ===== Back to top ===== -->
+    <button class="to-top" id="toTop" aria-label="بازگشت به بالا">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <!-- ===== Product Detail Modal ===== -->
+    <div class="product-modal" id="productModal">
+        <div class="pm-inner">
+            <div class="pm-toolbar">
+                <button class="icon-btn" id="pmBack" aria-label="بازگشت">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+                <span class="logo pm-brand">fable<em>.</em>set</span>
+                <span class="pm-cat" id="pmCat"></span>
+            </div>
+
+            <div class="pm-body">
+                <!-- گالری -->
+                <div class="pm-gallery">
+                    <div class="pm-main">
+                        <div class="pm-track" id="pmTrack"></div>
+                        <span class="pm-nav prev" id="pmPrev">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                        </span>
+                        <span class="pm-nav next" id="pmNext">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                        </span>
+                    </div>
+                    <div class="pm-thumbs" id="pmThumbs"></div>
+                    <p class="pm-hint">↔ با کشیدن عکس به چپ یا راست، تصاویر عوض می‌شوند</p>
+                </div>
+
+                <!-- اطلاعات -->
+                <div class="pm-info">
+                    <h2 id="pmName"></h2>
+                    <div class="product-price pm-price" id="pmPrice"></div>
+                    <div class="pm-sizes" id="pmSizes"></div>
+                    <p class="pm-desc" id="pmDesc"></p>
+                    <ul class="pm-facts">
+                        <li>✔ ۷ روز ضمانت بازگشت کالا</li>
+                        <li>✔ ارسال سریع به سراسر کشور</li>
+                        <li>✔ کیفیت و دوخت تضمینی</li>
+                    </ul>
+                    <div class="pm-actions">
+                        <div class="pm-qty">
+                            <button class="qty-btn" id="pmQtyPlus">+</button>
+                            <span id="pmQty">۱</span>
+                            <button class="qty-btn" id="pmQtyMinus">−</button>
+                        </div>
+                        <button class="btn btn-cream" id="pmAdd">افزودن به سبد خرید</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Admin Panel ===== -->
+    <div class="product-modal" id="adminModal">
+        <div class="pm-inner">
+            <div class="pm-toolbar">
+                <button class="icon-btn" id="adminBack" aria-label="بازگشت">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+                <span class="pm-cat" style="font-size:15px; font-weight:800;">⚙ پنل مدیریت</span>
+                <span class="admin-tools">
+                    <input type="password" id="newPass" placeholder="رمز جدید (اختیاری)">
+                    <button class="btn btn-outline btn-sm" id="savePass">ذخیره رمز</button>
+                    <button class="btn btn-outline btn-sm" id="adminLogout">خروج ⏏</button>
+                </span>
+            </div>
+            <div class="admin-nav">
+                <button class="admin-burger" id="adminBurger" type="button" aria-label="منوی بخش‌ها">☰ بخش‌ها</button>
+                <span class="admin-here" id="adminHere">👕 همه محصولات</span>
+                <div class="admin-menu" id="adminMenu">
+                    <div class="admin-menu-list" id="adminMenuList"></div>
+                </div>
+            </div>
+            <p class="admin-note">با دکمه ☰ بخش‌ها هر قسمت را جدا باز کن (کت، شلوار، کفش و ...). تغییر بده و در آخر «ذخیره تغییرات» را بزن. تغییرات روی سرور ذخیره می‌شود و همه مشتری‌ها می‌بینند.</p>
+            <div class="admin-tab active" data-tab="products">
+            <div class="admin-add-bar">
+                <button class="btn btn-outline btn-sm" id="addProductOpen">➕ افزودن محصول جدید</button>
+            </div>
+            <div class="admin-add-form" id="addProductForm">
+                <div class="ar-line">
+                    <span>نام محصول <input type="text" id="npName" placeholder="مثلاً پیراهن آستین بلند"></span>
+                    <span>قیمت <input type="number" id="npPrice" placeholder="مثلاً 118000000"></span>
+                    <span>قیمت قبلی <input type="number" id="npOld" placeholder="اختیاری"></span>
+                </div>
+                <div class="ar-line">
+                    <span>دسته‌بندی
+                        <select id="npCat">
+                            <option>کفش</option>
+                            <option>پیراهن</option>
+                            <option>کت</option>
+                            <option>کاپشن</option>
+                            <option>بافت</option>
+                            <option>دورس و هودی</option>
+                            <option>شلوار</option>
+                        </select>
+                    </span>
+                    <span id="npSubWrap" style="display:none">زیرشاخه
+                        <select id="npSub">
+                            <option value="پارچه‌ای">پارچه‌ای</option>
+                            <option value="کتان">کتان</option>
+                            <option value="جین">جین</option>
+                            <option value="سیلک">سیلک</option>
+                        </select>
+                    </span>
+                    <span>سایزها <input type="text" id="npSizes" placeholder="با , جدا کن: ۴۰,۴۱,۴۲"></span>
+                </div>
+                <div class="ar-line">
+                    <span>موجودی <input type="number" id="npStock" min="0" placeholder="خالی = بدون محدودیت"></span>
+                </div>
+                <div class="ar-slots" id="npSlots"></div>
+                <button class="btn btn-cream btn-sm" id="addProductConfirm">✔ ثبت محصول</button>
+            </div>
+            <div class="admin-list" id="adminList"></div>
+            <p class="admin-empty" id="adminEmpty" hidden>هنوز محصولی در این بخش نیست. با دکمه «➕ افزودن محصول» اولین محصول را بساز.</p>
+            </div>
+
+            <div class="admin-tab" data-tab="home" id="adminHome"></div>
+
+            <div class="admin-tab" data-tab="articles">
+                <div class="admin-add-bar">
+                    <button class="btn btn-outline btn-sm" id="addArticleBtn">➕ افزودن مقاله جدید</button>
+                </div>
+                <div class="admin-arts" id="adminArts"></div>
+            </div>
+
+            <div class="admin-tab" data-tab="about">
+                <h4 class="admin-sec">📝 متن «درباره ما»</h4>
+                <textarea id="adminAbout" rows="4"></textarea>
+            </div>
+
+            <div class="admin-actions">
+                <button class="btn btn-cream" id="adminSave">💾 ذخیره تغییرات</button>
+                <button class="btn btn-outline" id="adminReset">↩ بازگشت محصولات به پیش‌فرض</button>
+            </div>
+            <div class="admin-backup">
+                <button class="btn btn-outline btn-sm" id="exportBtn">⬇ گرفتن بکاپ (JSON)</button>
+                <span class="ar-file-wrap">⬆ بازیابی بکاپ
+                    <input type="file" id="importFile" class="ar-file" accept="application/json">
+                </span>
+                <span class="admin-backup-hint">بکاپ بگیر و جای امن نگه دار</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== Login (secret) ===== -->
+    <div class="product-modal login-modal" id="loginModal">
+        <div class="login-box">
+            <span class="logo">fable<em>.</em>set</span>
+            <p>این بخش فقط برای مدیر سایت است</p>
+            <input type="password" id="passInput" placeholder="رمز مدیریت" autocomplete="off">
+            <button class="btn btn-cream btn-block" id="loginBtn">ورود</button>
+            <p class="msg" id="loginMsg"></p>
+        </div>
+    </div>
+
+    <!-- ===== Article Reader ===== -->
+    <div class="product-modal" id="articleModal">
+        <div class="pm-inner">
+            <div class="pm-toolbar">
+                <button class="icon-btn" id="artBack" aria-label="بازگشت">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+                <span class="pm-cat">مقاله</span>
+            </div>
+            <article class="article-view">
+                <img id="artImg" alt="مقاله" onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 4 4%22%3E%3Crect width=%224%22 height=%224%22 fill=%22%23bab3a5%22/%3E%3C/svg%3E';">
+                <span id="artDate" class="blog-date"></span>
+                <h1 id="artTitle"></h1>
+                <div id="artBody"></div>
+            </article>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

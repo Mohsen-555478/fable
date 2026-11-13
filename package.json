@@ -1,0 +1,9 @@
+{
+  "name": "fable-set",
+  "version": "2.0.0",
+  "private": true,
+  "description": "فروشگاه FABLE.set با سرور (بدون نیاز به نصب بسته)",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
